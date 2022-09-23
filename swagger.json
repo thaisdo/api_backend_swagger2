@@ -53,9 +53,7 @@
                 }
             }
         },
-        "/boletos": {
-            
-        },
+        "/boletos": {},
         "/boletos/{id}": {
             "get": {
                 "description": "Exibe um boleto pelo ID",
@@ -86,7 +84,33 @@
                 }
             }
         },
-        "/requerimentos": {},
+        "/requerimentos": {
+            "description": "Requerimentos do Aluno Online",
+            "post": {
+                "description": "Cria um requerimento",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                    "$ref": "#/components/schemas/Requerimentos"
+                                }
+                            }
+                        }
+                    },
+                "responses": {
+                    "201": {
+                        "description": "Requerimento criado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Requerimentos"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/requerimentos/{id}": {}
     },
     "components": {
@@ -177,6 +201,44 @@
                     "situacao": {
                         "type": "string",
                         "example": "Pago"
+                    }
+                }
+            },
+            "Requerimentos": {
+                "type": "object",
+                "properties": {
+                    "disciplina": {
+                        "type": "object",
+                        "properties": {
+                            "codigo": {
+                                "type": "string",
+                                "example": "ADS028"
+                            },
+                            "nome": {
+                                "type": "string",
+                                "example": "Construção de Backend"
+                            }
+                        }
+                    },
+                    "periodo": {
+                        "type": "string",
+                        "example": "2022/1"
+                    },
+                    "prova": {
+                        "type": "string",
+                        "example": "A1"
+                    },
+                    "situacao": {
+                        "type": "string",
+                        "example": "Indeferido"
+                    },
+                    "argumentacao": {
+                        "type": "string",
+                        "example": "Seu argumento aqui!"
+                    },
+                    "parecer": {
+                        "type": "string",
+                        "example": "A resposta dada à questão é referente a outro assunto"
                     }
                 }
             }
